@@ -68,7 +68,7 @@
 
 ### 运行结果
 
-![img](D:\myProject\elastic-job-demo\pic/img.png)
+![img](pic/img.png)
 
 可以看到，任务执行前后，执行了监听器的内容。
 
@@ -104,10 +104,15 @@
 
    
 
+   
+
+   
+
+   
+
 2. ###  3.x版本尚未有稳定版，不适合生产环境。Github项目维护进度缓慢。
 
 
 
 
 
-### 
