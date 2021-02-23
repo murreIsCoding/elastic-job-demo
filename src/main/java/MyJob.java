@@ -13,7 +13,8 @@ public class MyJob implements SimpleJob {
         Integer id = Integer.parseInt(jobName.split("-")[1]);
         Integer shardingTotalCount = context.getShardingTotalCount();
         Integer shardingItem = context.getShardingItem();
-        if (id % 10 == shardingItem) {
+        //这里是负载均衡实现重点，id 和 shardingTotalCount 取模，如果等于shardingItem，那么就由当前机器处理，如果不是就跳过
+        if (id % shardingTotalCount == shardingItem) {
             print(jobName, shardingTotalCount, shardingItem);
         }
     }
