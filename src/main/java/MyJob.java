@@ -8,8 +8,6 @@ public class MyJob implements SimpleJob {
 
     @Override
     public void execute(ShardingContext context) {
-
-
         String jobName = context.getJobName();
 
         Integer id = Integer.parseInt(jobName.split("-")[1]);

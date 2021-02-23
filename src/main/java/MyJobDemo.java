@@ -7,7 +7,8 @@ import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperRegistryCente
 public class MyJobDemo {
 
     public static void main(String[] args) {
-        CoordinatorRegistryCenter coordinatorRegistryCenter =createRegistryCenter();
+        CoordinatorRegistryCenter coordinatorRegistryCenter = createRegistryCenter();
+
         new ScheduleJobBootstrap(coordinatorRegistryCenter, new MyJob(), createJobConfiguration("MyJob-0")).schedule();
         new ScheduleJobBootstrap(coordinatorRegistryCenter, new MyJob(), createJobConfiguration("MyJob-1")).schedule();
         new ScheduleJobBootstrap(coordinatorRegistryCenter, new MyJob(), createJobConfiguration("MyJob-2")).schedule();
@@ -29,7 +30,7 @@ public class MyJobDemo {
 
     private static JobConfiguration createJobConfiguration(String jobName) {
         // 创建作业配置
-        JobConfiguration jobConfig = JobConfiguration.newBuilder(jobName, 10).cron("0/5 * * * * ?").build();
+        JobConfiguration jobConfig = JobConfiguration.newBuilder(jobName, 10).jobListenerTypes("simpleJobListener").cron("0/5 * * * * ?").build();
         return jobConfig;
     }
 
